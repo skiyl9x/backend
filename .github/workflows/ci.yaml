@@ -30,6 +30,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/backend-api-service
+          tags: |
+            type=ref,event=pr
+            type=ref,event=tag
+            type=ref,event=branch,suffix=-{{sha}}
+            type=ref,event=branch,suffix=-latest
+
       # 3. Build and Push using Bake
       - name: Build and push
         uses: docker/bake-action@v5
@@ -41,3 +52,4 @@ jobs:
           targets: default
           # Push only on the main branch, not on PRs
           push: ${{ github.event_name != 'pull_request' }}
+          files: ${{ steps.meta.outputs.bake-file }}
