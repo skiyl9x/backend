@@ -34,7 +34,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/backend-api-service
+          images: ghcr.io/skiyl9x/backend-api-service
           tags: |
             type=ref,event=pr
             type=ref,event=tag
