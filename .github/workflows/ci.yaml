@@ -48,8 +48,8 @@ jobs:
           # Point to your hcl file
           files: |
             ./docker-bake.hcl
+            ${{ steps.meta.outputs.bake-file }}
           # Specify the target defined in your HCL
           targets: default
           # Push only on the main branch, not on PRs
           push: ${{ github.event_name != 'pull_request' }}
-          files: ${{ steps.meta.outputs.bake-file }}
