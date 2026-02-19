@@ -25,6 +25,7 @@ func main() {
 			{ID: 1, Title: "Install Go on RHEL 8", Status: "Done"},
 			{ID: 2, Title: "Configure K8s Pods", Status: "In Progress"},
 			{ID: 3, Title: "Fix SSH Tunnels", Status: "Todo"},
+			{ID: 4, Title: "Install two services and connect them", Status: "Done"},
 		}
 
 		w.Header().Set("Content-Type", "application/json")
