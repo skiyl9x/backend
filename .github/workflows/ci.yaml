@@ -38,7 +38,7 @@ jobs:
           tags: |
             type=ref,event=pr
             type=ref,event=tag
-            type=ref,event=branch,suffix=-{{sha}}
+            type=ref,event=branch,suffix=-{{date 'YYYYMMDD-HHmmss' tz='UTC'}}-{{sha}}
             type=ref,event=branch,suffix=-latest
 
       # 3. Build and Push using Bake
