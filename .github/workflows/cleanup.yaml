@@ -1,4 +1,5 @@
 name: Cleanup
+run-name: Cleanup for ${{ github.ref_name }} by @${{ github.actor }}
 on:
   delete
 
