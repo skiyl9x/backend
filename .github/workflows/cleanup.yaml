@@ -8,3 +8,10 @@ jobs:
     steps:
       - name: Test
         run: echo "${{ github.ref_name }}"
+
+      - name: Test
+        run: echo "${{ github.event.ref }}"
+
+      - name: Dump event payload
+        run: echo '${{toJSON(github.event)}}'
+
