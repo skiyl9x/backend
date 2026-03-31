@@ -9,7 +9,21 @@ jobs:
     steps:
       - name: Test
         run: echo "${{ github.event.ref }}"
+      
+      - name: Verify Before Deletion
+        id: verify
+        env:
+          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GH_REPO: "${{ github.repository }}"
+        run: |
+           if gh repo view --branch "${{ github.event.ref }}" > /dev/null 2>&1; then
+             echo "branch_exists=true" >> $GITHUB_OUTPUT
+           else
+             echo "branch_exists=false" >> $GITHUB_OUTPUT
+           fi
+       
       - name: Cleanup GitHub Assets
+        if: steps.verify.outputs.branch_exists == 'true'
         env:
           GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           GH_REPO: "${{ github.repository }}"
