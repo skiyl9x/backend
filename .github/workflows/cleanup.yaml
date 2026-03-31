@@ -1,5 +1,5 @@
 name: Cleanup
-run-name: Cleanup for ${{ github.ref_name }} by @${{ github.actor }}
+run-name: Cleanup for ${{ github.event.ref }} by @${{ github.actor }}
 on:
   delete
 
