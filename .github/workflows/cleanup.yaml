@@ -11,5 +11,5 @@ jobs:
       - name: Cleanup GitHub Assets
         env:
           GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          GH_REPO: "${{ env.GITHUB_REPOSITORY }}"
+          GH_REPO: "${{ github.repository }}"
         run: gh release delete "${{ github.event.ref }}-latest" --cleanup-tag --yes
