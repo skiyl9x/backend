@@ -5,6 +5,7 @@ on:
 jobs:
   prepare:
     runs-on: ubuntu-latest
+    environment: cleanup
     steps:
       - name: Test
         run: echo "${{ github.event.ref }}"
