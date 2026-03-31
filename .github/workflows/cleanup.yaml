@@ -1,0 +1,10 @@
+name: Cleanup
+on:
+  delete
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: echo "${{ github.ref_name }}"
