@@ -6,7 +6,7 @@ on:
 permissions:
   contents: write
 jobs:
-  prepare:
+  cleanup:
     runs-on: ubuntu-latest
     environment: cleanup
     steps:
