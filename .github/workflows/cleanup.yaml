@@ -24,7 +24,7 @@ jobs:
            fi
        
       - name: Cleanup GitHub Assets
-        if: steps.verify.outputs.branch_exists == 'true'
+        if: steps.verify.outputs.branch_exists == 'false'
         env:
           GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           GH_REPO: "${{ github.repository }}"
