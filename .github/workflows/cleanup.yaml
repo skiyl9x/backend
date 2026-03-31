@@ -3,6 +3,8 @@ run-name: Cleanup for ref:${{ github.event.ref }} by @${{ github.actor }}
 on:
   delete
 
+permissions:
+  contents: write
 jobs:
   prepare:
     runs-on: ubuntu-latest
@@ -28,3 +30,6 @@ jobs:
           GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           GH_REPO: "${{ github.repository }}"
         run: gh release delete "${{ github.event.ref }}-latest" --cleanup-tag --yes || true
+
+
+
