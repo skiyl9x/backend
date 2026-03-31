@@ -16,7 +16,7 @@ jobs:
         env:
           GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         run: |
-           if gh api repos/${{ github.repository }}/git/ref/heads/${{ github.event.ref }} --silent
+           if gh api repos/${{ github.repository }}/git/ref/heads/${{ github.event.ref }} --silent; then
              echo "branch_exists=true" >> $GITHUB_OUTPUT
            else
              echo "branch_exists=false" >> $GITHUB_OUTPUT
