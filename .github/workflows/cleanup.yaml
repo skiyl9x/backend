@@ -7,11 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test
-        run: echo "${{ github.ref_name }}"
-
-      - name: Test
         run: echo "${{ github.event.ref }}"
-
-      - name: Dump event payload
-        run: echo '${{toJSON(github.event)}}'
-
+      - name: Cleanup GitHub Assets
+        run: gh release delete "${{ github.event.ref }}-latest" --cleanup-tag --yes
