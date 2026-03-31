@@ -14,18 +14,15 @@ jobs:
         run: echo "${{ github.event.ref }}"
       
       - name: Verify Before Deletion
-        id: verify
         env:
           GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         run: |
            if gh api repos/${{ github.repository }}/git/ref/heads/${{ github.event.ref }} --silent; then
-             echo "branch_exists=true" >> $GITHUB_OUTPUT
-           else
-             echo "branch_exists=false" >> $GITHUB_OUTPUT
+             echo "::error:: branch ${{ github.event.ref }} exists"
+             exit 1
            fi
        
       - name: Cleanup GitHub Assets
-        if: steps.verify.outputs.branch_exists == 'false'
         env:
           GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           GH_REPO: "${{ github.repository }}"
